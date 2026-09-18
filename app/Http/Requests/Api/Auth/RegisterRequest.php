@@ -25,7 +25,13 @@ class RegisterRequest extends FormRequest
         return [
             'email' => 'required|email|max:255|unique:users,email',
             'name' => 'required|string|max:255',
-            'password' => 'required|string|min:8|confirmed',
+            'password' => [
+                'required',
+                'string',
+                'min:8',
+                'confirmed',
+                'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/'
+            ],
             'longitude' => 'nullable|numeric|between:-180,180',
             'latitude' => 'nullable|numeric|between:-90,90',
             'birthdate' => 'nullable|date',
@@ -45,6 +51,7 @@ class RegisterRequest extends FormRequest
             'password.required' => 'كلمة المرور مطلوبة.',
             'password.min' => 'كلمة المرور يجب أن لا تقل عن 8 أحرف.',
             'password.confirmed' => 'كلمة المرور غير متطابقة.',
+            'password.regex' => 'كلمة المرور يجب أن تحتوي على أحرف إنجليزية (كبيرة وصغيرة)، أرقام، ورموز (مثل #, $, %).',
             'longitude.required' => 'خط الطول مطلوب.',
             'longitude.numeric' => 'خط الطول يجب أن يكون رقماً.',
             'longitude.between' => 'خط الطول يجب أن يكون بين -180 و 180.',
