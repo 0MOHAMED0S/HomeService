@@ -23,8 +23,8 @@ class UpdateLocationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'longitude' => 'required|numeric',
-            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric|between:-180,180',
+            'latitude' => 'required|numeric|between:-90,90',
         ];
     }
 
@@ -33,8 +33,10 @@ class UpdateLocationRequest extends FormRequest
         return [
             'longitude.required' => 'خط الطول مطلوب.',
             'longitude.numeric' => 'خط الطول يجب أن يكون رقماً.',
+            'longitude.between' => 'خط الطول يجب أن يكون بين -180 و 180.',
             'latitude.required' => 'خط العرض مطلوب.',
             'latitude.numeric' => 'خط العرض يجب أن يكون رقماً.',
+            'latitude.between' => 'خط العرض يجب أن يكون بين -90 و 90.',
         ];
     }
 }
