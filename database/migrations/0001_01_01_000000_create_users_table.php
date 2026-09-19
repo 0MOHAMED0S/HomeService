@@ -19,8 +19,6 @@ return new class extends Migration
             $table->string('password')->nullable();
             $table->enum('role', ['admin', 'user', 'provider'])->default('user');
             $table->date('birthdate')->nullable();
-            $table->decimal('longitude', 10, 7)->nullable();
-            $table->decimal('latitude', 10, 7)->nullable();
             $table->string('phone')->nullable();
             $table->boolean('privacy_agree')->default(false);
             $table->rememberToken();

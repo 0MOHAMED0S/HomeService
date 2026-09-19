@@ -24,7 +24,7 @@ class OtpController extends Controller
             ['email' => $email],
             [
                 'otp' => $otp,
-                'expires_at' => now()->addMinutes(10),
+                'expires_at' => now()->addMinutes(2),
                 'verified_at' => null
             ]
         );
@@ -51,7 +51,7 @@ class OtpController extends Controller
 
         $verification->update([
             'verified_at' => now(),
-            'expires_at' => now()->addMinutes(10), // Give them 10 mins to complete registration
+            'expires_at' => now()->addMinutes(2), // Give them 2 mins to complete registration
         ]);
 
         return $this->successResponse(null, 'تم التحقق من الرمز بنجاح.');

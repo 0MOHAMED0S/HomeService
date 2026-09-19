@@ -26,8 +26,6 @@ class User extends Authenticatable
         'password',
         'role',
         'birthdate',
-        'longitude',
-        'latitude',
         'phone',
         'privacy_agree',
     ];
@@ -53,5 +51,10 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function providerProfile()
+    {
+        return $this->hasOne(ProviderProfile::class);
     }
 }

@@ -32,8 +32,6 @@ class RegisterRequest extends FormRequest
                 'confirmed',
                 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/'
             ],
-            'longitude' => 'nullable|numeric|between:-180,180',
-            'latitude' => 'nullable|numeric|between:-90,90',
             'birthdate' => 'nullable|date',
             'phone' => 'required|string|max:20',
             'role' => 'required|in:user,provider',
@@ -56,12 +54,7 @@ class RegisterRequest extends FormRequest
             'password.min' => 'كلمة المرور يجب أن لا تقل عن 8 أحرف.',
             'password.confirmed' => 'كلمة المرور غير متطابقة.',
             'password.regex' => 'كلمة المرور يجب أن تحتوي على أحرف إنجليزية (كبيرة وصغيرة)، أرقام، ورموز (مثل #, $, %).',
-            'longitude.required' => 'خط الطول مطلوب.',
-            'longitude.numeric' => 'خط الطول يجب أن يكون رقماً.',
-            'longitude.between' => 'خط الطول يجب أن يكون بين -180 و 180.',
-            'latitude.required' => 'خط العرض مطلوب.',
-            'latitude.numeric' => 'خط العرض يجب أن يكون رقماً.',
-            'latitude.between' => 'خط العرض يجب أن يكون بين -90 و 90.',
+
             'birthdate.date' => 'تاريخ الميلاد غير صحيح.',
             'phone.required' => 'رقم الهاتف مطلوب.',
             'phone.string' => 'رقم الهاتف غير صالح.',

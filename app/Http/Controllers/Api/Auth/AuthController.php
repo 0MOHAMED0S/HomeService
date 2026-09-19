@@ -34,8 +34,6 @@ class AuthController extends Controller
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
                 'role' => $request->role,
-                'longitude' => $request->longitude,
-                'latitude' => $request->latitude,
                 'phone' => $request->phone,
                 'birthdate' => $request->birthdate,
                 'privacy_agree' => $request->boolean('privacy_agree'),
@@ -103,11 +101,16 @@ class AuthController extends Controller
     {
         $user = $request->user();
         
-        $user->update([
-            'longitude' => $request->longitude,
-            'latitude' => $request->latitude,
-        ]);
+        $profile = $user->providerProfile;
+        
+        if ($profile) {
+            $profile->update([
+                'longitude' => $request->longitude,
+                'latitude' => $request->latitude,
+            ]);
+            return $this->successResponse($profile, 'تم تحديث الموقع بنجاح.');
+        }
 
-        return $this->successResponse($user, 'تم تحديث الموقع بنجاح.');
+        return $this->errorResponse('لا يوجد ملف شخصي لتحديث الموقع.', 404);
     }
 }
