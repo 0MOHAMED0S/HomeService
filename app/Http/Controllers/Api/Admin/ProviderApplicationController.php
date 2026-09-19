@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ProviderProfile;
 use App\Http\Requests\Api\Admin\ReviewProviderApplicationRequest;
